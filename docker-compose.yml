@@ -1,0 +1,52 @@
+version: "3.9"
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: carecompanion
+      POSTGRES_USER: carecompanion
+      POSTGRES_PASSWORD: carecompanion
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U carecompanion"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  app:
+    build: .
+    restart: unless-stopped
+    ports:
+      - "8080:8080"
+    environment:
+      NODE_ENV: production
+      PORT: 8080
+      DATABASE_URL: postgresql://carecompanion:carecompanion@postgres:5432/carecompanion
+      JWT_ACCESS_SECRET: ${JWT_ACCESS_SECRET:-docker_dev_access_secret_change_in_prod_xxxxxxxxxxx}
+      JWT_REFRESH_SECRET: ${JWT_REFRESH_SECRET:-docker_dev_refresh_secret_change_in_prod_xxxxxxxxxx}
+      JWT_ACCESS_EXPIRY: 15m
+      JWT_REFRESH_EXPIRY: 7d
+      VAPID_PUBLIC_KEY: ${VAPID_PUBLIC_KEY:-BEl62iUYgUivxIkv69yViEuiBIa-Ib9-SkvMeAtA3LFgDzkrxZJjSgSnfckjBJuBkr3qBUYIHBQFLXYp5Nksh8U}
+      VAPID_PRIVATE_KEY: ${VAPID_PRIVATE_KEY:-UUxI4O8-FbRouAevSmBQ6o18hgE4nSG3qwvJTfKc-ls}
+      VAPID_SUBJECT: mailto:admin@carecompanion.app
+      MISSED_DOSE_GRACE_MINUTES: 120
+      INVITE_CODE_EXPIRY_HOURS: 24
+      LOG_LEVEL: info
+      SEED_ON_START: "true"
+    depends_on:
+      postgres:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD-SHELL", "wget -qO- http://localhost:8080/api/v1/health || exit 1"]
+      interval: 30s
+      timeout: 10s
+      start_period: 60s
+      retries: 3
+
+volumes:
+  postgres_data:

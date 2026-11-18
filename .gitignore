@@ -1,0 +1,44 @@
+# Dependencies
+node_modules/
+.pnp
+.pnp.js
+
+# Build outputs
+client/dist/
+server/dist/
+
+# Environment files  (keep .env.example, ignore real secrets)
+.env
+server/.env
+client/.env
+
+# Prisma generated
+server/prisma/generated/
+
+# Logs
+*.log
+npm-debug.log*
+pids
+*.pid
+*.seed
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Test coverage
+coverage/
+.nyc_output/
+
+# Docker volumes (local)
+postgres_data/
+
+# Temp
+*.tmp
+*.temp

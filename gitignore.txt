@@ -1,0 +1,9 @@
+node_modules/
+client/dist/
+server/dist/
+.env
+.env.local
+logs/
+*.log
+coverage/
+server/prisma/dev.db

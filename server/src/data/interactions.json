@@ -1,0 +1,101 @@
+{
+  "aspirin": {
+    "warfarin": { "severity": "red", "message": "Aspirin + Warfarin: Increased bleeding risk. Avoid unless prescribed. Monitor INR closely." },
+    "ibuprofen": { "severity": "red", "message": "Aspirin + Ibuprofen: Both NSAIDs together increase GI bleeding and ulcer risk significantly." },
+    "clopidogrel": { "severity": "amber", "message": "Aspirin + Clopidogrel: Dual antiplatelet therapy – high bleeding risk. Only use if cardiologist has approved." },
+    "methotrexate": { "severity": "red", "message": "Aspirin + Methotrexate: Aspirin can increase Methotrexate toxicity. Avoid combination." },
+    "naproxen": { "severity": "amber", "message": "Aspirin + Naproxen: Increased GI bleeding and reduced cardioprotective effect of aspirin." }
+  },
+  "metformin": {
+    "alcohol": { "severity": "red", "message": "Metformin + Alcohol: Risk of lactic acidosis. Avoid alcohol while taking Metformin." },
+    "contrast dye": { "severity": "red", "message": "Metformin + IV Contrast: Stop Metformin 48h before and after contrast procedures. Kidney injury risk." },
+    "furosemide": { "severity": "amber", "message": "Metformin + Furosemide: Furosemide may increase Metformin levels. Monitor kidney function." },
+    "dapagliflozin": { "severity": "amber", "message": "Metformin + Dapagliflozin: Risk of hypoglycaemia and urinary tract infections. Monitor blood sugar." }
+  },
+  "amlodipine": {
+    "simvastatin": { "severity": "amber", "message": "Amlodipine + Simvastatin: Amlodipine can increase Simvastatin blood levels up to 77%, increasing muscle side effects." },
+    "cyclosporine": { "severity": "red", "message": "Amlodipine + Cyclosporine: Increased Cyclosporine levels. Requires dose adjustment and monitoring." },
+    "rifampicin": { "severity": "red", "message": "Amlodipine + Rifampicin: Rifampicin dramatically reduces Amlodipine effectiveness." },
+    "grapefruit": { "severity": "amber", "message": "Amlodipine + Grapefruit: Grapefruit juice can increase Amlodipine levels. Avoid grapefruit." }
+  },
+  "atorvastatin": {
+    "clarithromycin": { "severity": "red", "message": "Atorvastatin + Clarithromycin: Can cause dangerous increase in statin levels, leading to muscle damage (rhabdomyolysis)." },
+    "erythromycin": { "severity": "red", "message": "Atorvastatin + Erythromycin: Increased statin levels, risk of myopathy." },
+    "rifampicin": { "severity": "amber", "message": "Atorvastatin + Rifampicin: Rifampicin reduces Atorvastatin effectiveness significantly." },
+    "niacin": { "severity": "amber", "message": "Atorvastatin + Niacin: Increased risk of myopathy and muscle pain." },
+    "colchicine": { "severity": "amber", "message": "Atorvastatin + Colchicine: Increased risk of muscle weakness and damage." }
+  },
+  "warfarin": {
+    "paracetamol": { "severity": "amber", "message": "Warfarin + Paracetamol: High doses of paracetamol can enhance anticoagulant effect. Limit to ≤2g/day." },
+    "amiodarone": { "severity": "red", "message": "Warfarin + Amiodarone: Amiodarone markedly increases Warfarin levels. Requires 30-50% dose reduction." },
+    "fluconazole": { "severity": "red", "message": "Warfarin + Fluconazole: Significantly increases INR. Close monitoring required." },
+    "metronidazole": { "severity": "red", "message": "Warfarin + Metronidazole: Can dramatically increase INR and bleeding risk." },
+    "cephalexin": { "severity": "amber", "message": "Warfarin + Cephalexin: May slightly increase anticoagulant effect. Monitor INR." }
+  },
+  "lisinopril": {
+    "potassium": { "severity": "amber", "message": "Lisinopril + Potassium supplements: Risk of hyperkalaemia (high potassium). Monitor potassium levels." },
+    "spironolactone": { "severity": "red", "message": "Lisinopril + Spironolactone: High risk of dangerous hyperkalaemia. Use only under close monitoring." },
+    "nsaids": { "severity": "amber", "message": "Lisinopril + NSAIDs: NSAIDs reduce antihypertensive effect and increase kidney injury risk." },
+    "allopurinol": { "severity": "amber", "message": "Lisinopril + Allopurinol: Increased risk of hypersensitivity reactions. Monitor closely." }
+  },
+  "metoprolol": {
+    "verapamil": { "severity": "red", "message": "Metoprolol + Verapamil: Risk of severe bradycardia and heart block. Avoid combination." },
+    "diltiazem": { "severity": "red", "message": "Metoprolol + Diltiazem: Risk of bradycardia and heart block. Use with extreme caution." },
+    "clonidine": { "severity": "red", "message": "Metoprolol + Clonidine: Stopping Clonidine abruptly can cause severe hypertensive rebound, worsened by beta-blockers." },
+    "insulin": { "severity": "amber", "message": "Metoprolol + Insulin: Beta-blockers can mask hypoglycaemia symptoms like heart pounding. Monitor blood sugar carefully." }
+  },
+  "omeprazole": {
+    "clopidogrel": { "severity": "red", "message": "Omeprazole + Clopidogrel: Omeprazole reduces anti-platelet effect of Clopidogrel. Increases heart attack risk." },
+    "methotrexate": { "severity": "amber", "message": "Omeprazole + Methotrexate: May increase Methotrexate levels and toxicity." },
+    "rifampicin": { "severity": "amber", "message": "Omeprazole + Rifampicin: Rifampicin reduces Omeprazole levels, reducing its effectiveness." }
+  },
+  "pantoprazole": {
+    "clopidogrel": { "severity": "amber", "message": "Pantoprazole + Clopidogrel: Less interaction than Omeprazole but still some reduced antiplatelet effect. Preferred PPI with Clopidogrel." },
+    "methotrexate": { "severity": "amber", "message": "Pantoprazole + Methotrexate: May slightly increase Methotrexate levels." }
+  },
+  "glipizide": {
+    "fluconazole": { "severity": "red", "message": "Glipizide + Fluconazole: Can cause severe hypoglycaemia. Monitor blood sugar closely." },
+    "metformin": { "severity": "green", "message": "Glipizide + Metformin: Commonly used together for Type 2 Diabetes. Monitor for hypoglycaemia." },
+    "alcohol": { "severity": "amber", "message": "Glipizide + Alcohol: Increased risk of hypoglycaemia and flushing. Avoid alcohol." }
+  },
+  "glimepiride": {
+    "fluconazole": { "severity": "red", "message": "Glimepiride + Fluconazole: Severe hypoglycaemia risk. Avoid combination." },
+    "rifampicin": { "severity": "amber", "message": "Glimepiride + Rifampicin: Reduces Glimepiride blood levels, may worsen diabetes control." }
+  },
+  "amlodipine+atenolol": {
+    "verapamil": { "severity": "red", "message": "Atenolol + Verapamil: Risk of bradycardia and AV block. Avoid." }
+  },
+  "clopidogrel": {
+    "omeprazole": { "severity": "red", "message": "Clopidogrel + Omeprazole: Significantly reduces antiplatelet effect. Use Pantoprazole instead." },
+    "naproxen": { "severity": "red", "message": "Clopidogrel + Naproxen: Increased GI bleeding risk." }
+  },
+  "doxycycline": {
+    "antacids": { "severity": "red", "message": "Doxycycline + Antacids/Calcium: Antacids drastically reduce Doxycycline absorption. Take 2 hours apart." },
+    "iron": { "severity": "red", "message": "Doxycycline + Iron: Iron chelates Doxycycline, reducing absorption. Take 3 hours apart." },
+    "warfarin": { "severity": "amber", "message": "Doxycycline + Warfarin: May increase INR and bleeding risk. Monitor INR." }
+  },
+  "ciprofloxacin": {
+    "antacids": { "severity": "red", "message": "Ciprofloxacin + Antacids: Antacids containing Mg/Al reduce Ciprofloxacin absorption by up to 90%. Take 2 hours apart." },
+    "warfarin": { "severity": "red", "message": "Ciprofloxacin + Warfarin: Can significantly increase INR. Monitor closely." },
+    "theophylline": { "severity": "red", "message": "Ciprofloxacin + Theophylline: Increases Theophylline toxicity. Can cause seizures and cardiac arrhythmias." },
+    "nsaids": { "severity": "amber", "message": "Ciprofloxacin + NSAIDs: Increased risk of seizures. Use with caution." }
+  },
+  "amoxicillin": {
+    "warfarin": { "severity": "amber", "message": "Amoxicillin + Warfarin: May increase INR. Monitor anticoagulation." },
+    "methotrexate": { "severity": "amber", "message": "Amoxicillin + Methotrexate: May increase Methotrexate toxicity." }
+  },
+  "azithromycin": {
+    "warfarin": { "severity": "amber", "message": "Azithromycin + Warfarin: Can increase INR. Monitor closely." },
+    "amiodarone": { "severity": "red", "message": "Azithromycin + Amiodarone: Both can prolong QT interval. Risk of dangerous heart rhythm disturbance." }
+  },
+  "losartan": {
+    "potassium": { "severity": "amber", "message": "Losartan + Potassium supplements: Risk of hyperkalaemia. Monitor potassium levels." },
+    "nsaids": { "severity": "amber", "message": "Losartan + NSAIDs: Reduced antihypertensive effect and kidney injury risk." },
+    "lithium": { "severity": "red", "message": "Losartan + Lithium: ARBs can increase Lithium levels causing toxicity." }
+  },
+  "pregabalin": {
+    "alcohol": { "severity": "red", "message": "Pregabalin + Alcohol: Additive CNS depression. Avoid alcohol." },
+    "oxycodone": { "severity": "red", "message": "Pregabalin + Opioids: Risk of respiratory depression and sedation. Use with extreme caution." },
+    "benzodiazepines": { "severity": "red", "message": "Pregabalin + Benzodiazepines: Increased sedation and risk of respiratory depression." }
+  }
+}

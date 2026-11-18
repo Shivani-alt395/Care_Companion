@@ -1,0 +1,70 @@
+name: CI
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main]
+
+jobs:
+  ci:
+    name: Lint, Typecheck, Test, Build
+    runs-on: ubuntu-latest
+
+    services:
+      postgres:
+        image: postgres:16-alpine
+        env:
+          POSTGRES_DB: carecompanion_test
+          POSTGRES_USER: carecompanion
+          POSTGRES_PASSWORD: carecompanion
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+        ports:
+          - 5432:5432
+
+    env:
+      NODE_ENV: test
+      DATABASE_URL: postgresql://carecompanion:carecompanion@localhost:5432/carecompanion_test
+      TEST_DATABASE_URL: postgresql://carecompanion:carecompanion@localhost:5432/carecompanion_test
+      JWT_ACCESS_SECRET: ci_access_secret_at_least_32_characters_for_test
+      JWT_REFRESH_SECRET: ci_refresh_secret_at_least_32_characters_for_test
+      JWT_ACCESS_EXPIRY: 15m
+      JWT_REFRESH_EXPIRY: 7d
+      ALLOWED_ORIGINS: http://localhost:5173
+      MISSED_DOSE_GRACE_MINUTES: 120
+      INVITE_CODE_EXPIRY_HOURS: 24
+      LOG_LEVEL: silent
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Generate Prisma client
+        run: npm run generate --workspace=server
+
+      - name: Run Prisma migrations (test DB)
+        run: npx prisma migrate deploy
+        working-directory: server
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Typecheck
+        run: npm run typecheck
+
+      - name: Test
+        run: npm run test
+
+      - name: Build
+        run: npm run build
