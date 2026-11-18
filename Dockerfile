@@ -12,8 +12,9 @@ RUN npm ci --ignore-scripts
 FROM node:20-alpine AS client-build
 WORKDIR /app
 
-COPY --from=deps /app/node_modules ./node_modules
-COPY --from=deps /app/client/node_modules ./client/node_modules 2>/dev/null || true
+# Copy the entire /app tree from deps (includes root + workspace node_modules)
+COPY --from=deps /app/ ./
+# Overwrite with actual source (node_modules excluded via .dockerignore)
 COPY package.json ./
 COPY client ./client
 
@@ -23,8 +24,9 @@ RUN npm run build --workspace=client
 FROM node:20-alpine AS server-build
 WORKDIR /app
 
-COPY --from=deps /app/node_modules ./node_modules
-COPY --from=deps /app/server/node_modules ./server/node_modules 2>/dev/null || true
+# Copy the entire /app tree from deps (includes root + workspace node_modules)
+COPY --from=deps /app/ ./
+# Overwrite with actual source (node_modules excluded via .dockerignore)
 COPY package.json ./
 COPY server ./server
 
@@ -36,9 +38,9 @@ WORKDIR /app
 
 RUN addgroup -g 1001 -S nodejs && adduser -S careapp -u 1001
 
-# Copy production deps
+# Copy production node_modules from deps stage
 COPY --from=deps /app/node_modules ./node_modules
-COPY --from=deps /app/server/node_modules ./server/node_modules 2>/dev/null || true
+COPY --from=deps /app/server/node_modules ./server/node_modules
 
 # Copy built artifacts
 COPY --from=server-build /app/server/dist ./server/dist

@@ -1,6 +1,26 @@
+# Never send node_modules to the build context — they come from the deps stage
 node_modules
+client/node_modules
+server/node_modules
+
+# Build outputs (not needed as build inputs)
 client/dist
 server/dist
+client/dev-dist
+
+# Secrets
 .env
+server/.env
+*.env
+
+# Dev/CI noise
 *.log
 coverage
+.nyc_output
+.github
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode
+.idea
